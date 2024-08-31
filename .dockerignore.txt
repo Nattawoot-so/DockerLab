@@ -1,0 +1,28 @@
+# Ignore the node_modules directory
+node_modules
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+tmp
+temp
+
+# Ignore build artifacts
+bin
+obj
+
+# Ignore version control files
+.git
+.gitignore
+
+# Ignore IDE or editor-specific files
+.vscode
+.idea
+
+# Ignore Docker files
+Dockerfile
+.dockerignore
+
+# Ignore documentation files
+README.md

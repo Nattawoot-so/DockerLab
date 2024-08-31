@@ -1,0 +1,36 @@
+version: '3'
+services:
+  apiwithdocker5004:
+    build: .
+    ports:
+        - "5004:80"
+  db:
+    image: mysql:latest
+    container_name: mysql8
+    restart: always
+    #command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    #command: --mysql-native-password=ON
+    #command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tutorial
+    ports:
+     - "3306:3306"
+    volumes:
+     #- mysql_data_test:/var/lib/mysql    
+     - ./data:/var/lib/mysql    
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    environment:
+        PMA_HOST: db
+        PMA_POST: 3306
+        PMA_USER: root
+        PMA_PASSWORD: root
+    ports: 
+        - "8080:80"
+    depends_on: 
+        - db
+#volumes:
+  #mysql_data_test: 
+    #driver: local 
